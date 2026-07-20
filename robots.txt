@@ -1,0 +1,5 @@
+# BISML public website
+User-agent: *
+Allow: /
+
+# Add the absolute sitemap URL here when the production domain is confirmed.
