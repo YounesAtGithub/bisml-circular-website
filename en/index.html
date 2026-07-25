@@ -113,24 +113,27 @@
     .utility {
       background: var(--evergreen-deep); color: #d9efe6; font-size: 12px; letter-spacing: .04em;
     }
-    .utility-inner { align-items: center; display: flex; justify-content: space-between; min-height: 36px; }
-    .utility-note { margin: 0; }
+    .utility-inner { align-items: center; display: flex; justify-content: flex-end; min-height: 36px; }
     .utility-list { display: flex; gap: 20px; list-style: none; margin: 0; padding: 0; }
     .utility-list li { align-items: center; display: flex; gap: 7px; }
     .utility-list li::before { background: var(--signal); border-radius: 50%; content: ""; height: 5px; width: 5px; }
-    .site-header { background: rgba(251, 253, 252, .92); border-bottom: 1px solid rgba(201, 221, 213, .9); position: sticky; top: 0; z-index: 20; backdrop-filter: blur(16px); }
-    .nav { align-items: center; display: flex; height: 76px; justify-content: space-between; }
-    .brand { align-items: center; display: inline-flex; flex-shrink: 0; }
-    .brand-logo { display: block; height: auto; width: 184px; }
+    .site-header { background: rgba(4, 60, 43, .97); border-bottom: 1px solid rgba(213, 238, 232, .2); position: sticky; top: 0; z-index: 20; backdrop-filter: blur(16px); }
+    .nav { align-items: center; display: flex; height: 84px; justify-content: space-between; }
+    .brand { align-items: center; display: inline-flex; flex-shrink: 0; gap: 14px; }
+    .brand-symbol { display: block; flex: 0 0 auto; height: 58px; width: 58px; }
+    .brand-wordmark { color: #f7fcf9; font-family: var(--display); font-size: 52px; font-weight: 900; letter-spacing: -.08em; line-height: .82; }
+    .brand-wordmark span { color: var(--signal); }
+    .brand-divider { background: var(--signal); display: block; height: 48px; margin-inline: 4px; opacity: .9; width: 2px; }
+    .brand-slogan { color: #f7fcf9; font-size: clamp(15px, 1.35vw, 19px); font-weight: 800; letter-spacing: .005em; line-height: 1.08; white-space: nowrap; }
     .nav-panel { align-items: center; display: flex; gap: 28px; }
     .nav-links { align-items: center; display: flex; gap: 22px; list-style: none; margin: 0; padding: 0; }
-    .nav-links a { color: var(--ink); font-size: 14px; font-weight: 700; padding: 10px 0; position: relative; }
-    .nav-links a::after { background: var(--teal); bottom: 3px; content: ""; height: 2px; left: 0; position: absolute; transform: scaleX(0); transform-origin: right; transition: transform .2s ease; width: 100%; }
+    .nav-links a { color: #f7fcf9; font-size: 14px; font-weight: 700; padding: 10px 0; position: relative; }
+    .nav-links a::after { background: var(--signal); bottom: 3px; content: ""; height: 2px; left: 0; position: absolute; transform: scaleX(0); transform-origin: right; transition: transform .2s ease; width: 100%; }
     .nav-links a:hover::after, .nav-links a:focus-visible::after { transform: scaleX(1); transform-origin: left; }
-    .language-toggle { background: var(--mint); border: 1px solid var(--line); border-radius: 6px; display: flex; overflow: hidden; padding: 2px; }
-    .language-toggle button { background: transparent; border: 0; border-radius: 4px; color: var(--ink-soft); font-size: 12px; font-weight: 900; min-height: 30px; padding: 0 9px; }
-    .language-toggle button[aria-pressed="true"] { background: var(--evergreen); color: white; }
-    .menu-button { background: transparent; border: 1px solid var(--line); border-radius: 6px; color: var(--ink); display: none; height: 44px; padding: 0; width: 44px; }
+    .language-toggle { background: rgba(255, 255, 255, .06); border: 1px solid rgba(213, 238, 232, .32); border-radius: 6px; display: flex; overflow: hidden; padding: 2px; }
+    .language-toggle button { background: transparent; border: 0; border-radius: 4px; color: #d9efe6; font-size: 12px; font-weight: 900; min-height: 30px; padding: 0 9px; }
+    .language-toggle button[aria-pressed="true"] { background: var(--signal); color: var(--evergreen-deep); }
+    .menu-button { background: transparent; border: 1px solid rgba(213, 238, 232, .42); border-radius: 6px; color: #f7fcf9; display: none; height: 44px; padding: 0; width: 44px; }
     .menu-button span, .menu-button::before, .menu-button::after { background: currentColor; content: ""; display: block; height: 2px; margin: 5px auto; transition: transform .18s ease; width: 19px; }
     .menu-button[aria-expanded="true"] span { transform: scaleX(0); }
     .menu-button[aria-expanded="true"]::before { transform: translateY(7px) rotate(45deg); }
@@ -275,15 +278,32 @@
     /* Footer */
     .footer { background: #032d20; color: #c7dfd6; padding: 34px 0; }
     .footer-inner { align-items: center; display: flex; gap: 25px; justify-content: space-between; }
-    .footer .brand { background: white; padding: 4px 7px; }
-    .footer .brand-logo { width: 162px; }
+    .footer .brand { background: transparent; gap: 12px; padding: 0; }
+    .footer .brand-symbol { height: 50px; width: 50px; }
+    .footer .brand-wordmark { font-size: 43px; }
+    .footer .brand-divider { height: 40px; margin-inline: 2px; }
+    .footer .brand-slogan { color: #f7fcf9; font-size: 16px; }
     .footer-links { display: flex; flex-wrap: wrap; gap: 20px; justify-content: flex-end; }
     .footer-links a, .footer-links span { font-size: 12px; }
     .footer-links a:hover { color: var(--signal); }
 
     @media (max-width: 980px) {
       :root { --content: min(100% - 40px, 760px); }
-      .utility-list { display: none; }
+      .utility { display: none; }
+      .nav { height: 76px; }
+      .brand { gap: 13px; }
+      .brand-symbol { height: 48px; width: 48px; }
+      .brand-wordmark { font-size: 43px; }
+      .brand-divider { height: 40px; }
+      .brand-slogan { font-size: 14px; }
+      .menu-button { display: block; }
+      .nav-panel { background: var(--evergreen-deep); border-bottom: 1px solid rgba(213, 238, 232, .2); box-shadow: 0 12px 20px rgba(4, 60, 43, .25); display: none; left: 0; padding: 16px; position: absolute; right: 0; top: 76px; }
+      .nav-panel.open { align-items: stretch; display: flex; flex-direction: column; gap: 10px; }
+      .nav-links { align-items: stretch; flex-direction: column; gap: 0; }
+      .nav-links a { display: block; padding: 12px 0; }
+      .nav-links a::after { bottom: 7px; }
+      .language-toggle { align-self: flex-start; }
+      .footer-inner { align-items: flex-start; flex-direction: column; }
       .hero { padding-top: 64px; }
       .hero-grid, .assurance-layout, .contact-grid, .route-layout { grid-template-columns: 1fr; }
       .hero-grid { gap: 48px; }
@@ -308,17 +328,8 @@
 
     @media (max-width: 740px) {
       :root { --content: calc(100% - 32px); }
-      .utility-inner { justify-content: center; }
-      .utility-note { font-size: 11px; text-align: center; }
-      .nav { height: 68px; }
-      .brand-logo { width: 160px; }
-      .menu-button { display: block; }
-      .nav-panel { background: var(--paper); border-bottom: 1px solid var(--line); box-shadow: 0 12px 20px rgba(4, 60, 43, .07); display: none; left: 0; padding: 16px; position: absolute; right: 0; top: 68px; }
-      .nav-panel.open { align-items: stretch; display: flex; flex-direction: column; gap: 10px; }
-      .nav-links { align-items: stretch; flex-direction: column; gap: 0; }
-      .nav-links a { display: block; padding: 12px 0; }
-      .nav-links a::after { bottom: 7px; }
-      .language-toggle { align-self: flex-start; }
+      .nav { height: 70px; }
+      .nav-panel { top: 70px; }
       .hero { padding: 54px 0 60px; }
       .hero h1 { font-size: clamp(45px, 13vw, 60px); }
       .hero-intro { font-size: 17px; }
@@ -355,6 +366,19 @@
       .footer-links { justify-content: flex-start; }
     }
 
+    @media (max-width: 480px) {
+      .nav .brand { gap: 7px; }
+      .nav .brand-symbol { height: 34px; width: 34px; }
+      .nav .brand-wordmark { font-size: 30px; }
+      .nav .brand-divider { height: 28px; margin-inline: 0; width: 1px; }
+      .nav .brand-slogan { font-size: 10px; max-width: 82px; white-space: normal; }
+      .footer .brand { gap: 9px; }
+      .footer .brand-symbol { height: 43px; width: 43px; }
+      .footer .brand-wordmark { font-size: 34px; }
+      .footer .brand-divider { height: 32px; margin-inline: 0; width: 1px; }
+      .footer .brand-slogan { font-size: 11px; max-width: 104px; white-space: normal; }
+    }
+
     @media (max-width: 560px) {
       .map { transform: scale(.74); }
     }
@@ -373,7 +397,6 @@
 
   <div class="utility">
     <div class="container utility-inner">
-      <p class="utility-note" data-i18n="utility">Driving Circular Solutions</p>
       <ul class="utility-list" aria-label="Kwaliteiten">
         <li data-i18n="utilityOne">Certificering</li>
         <li data-i18n="utilityTwo">Traceerbare keten</li>
@@ -384,8 +407,11 @@
 
   <header class="site-header">
     <div class="container nav">
-      <a href="#top" class="brand" aria-label="BISML home">
-        <img class="brand-logo" src="../assets/bisml-logo-horizontal.png" alt="BISML — Driving Circular Solutions" />
+      <a href="#top" class="brand" aria-label="BISML — Driving Circular Solutions">
+        <svg class="brand-symbol" viewBox="0 0 100 100" aria-hidden="true"><defs><linearGradient id="brand-triangle-left" x1="100%" y1="0%" x2="0%" y2="100%"><stop offset="0%" stop-color="#68d7bc"/><stop offset="100%" stop-color="#55cf09"/></linearGradient><linearGradient id="brand-triangle-right" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#68d7bc"/><stop offset="100%" stop-color="#42c70c"/></linearGradient><linearGradient id="brand-triangle-base" x1="0%" y1="0%" x2="100%" y2="0%"><stop offset="0%" stop-color="#55cf09"/><stop offset="100%" stop-color="#68d7bc"/></linearGradient></defs><circle cx="50" cy="16" r="12" fill="#68d7bc"/><circle cx="17" cy="78" r="12" fill="#55cf09"/><circle cx="83" cy="78" r="12" fill="#68d7bc"/><path d="M25 69 43 32" fill="none" stroke="url(#brand-triangle-left)" stroke-linecap="square" stroke-width="7"/><path d="M57 32 75 69" fill="none" stroke="url(#brand-triangle-right)" stroke-linecap="square" stroke-width="7"/><path d="M30 78h40" fill="none" stroke="url(#brand-triangle-base)" stroke-linecap="square" stroke-width="7"/></svg>
+        <span class="brand-wordmark" aria-hidden="true">BISM<span>L</span></span>
+        <span class="brand-divider" aria-hidden="true"></span>
+        <span class="brand-slogan" data-i18n="utility">Driving Circular Solutions</span>
       </a>
       <button class="menu-button" aria-controls="nav-panel" aria-expanded="false" aria-label="Open menu" data-i18n-aria="openMenu"><span></span></button>
       <div class="nav-panel" id="nav-panel">
@@ -411,7 +437,7 @@
       <div class="container hero-grid">
         <div>
           <p class="eyebrow" data-i18n="heroEyebrow">Van reststroom naar nieuwe waarde</p>
-          <h1 data-i18n-html="heroTitle">Geef reststromen, afgekeurde bulkleveringen en <em>afgekeurde tanks</em> een volgende bestemming.</h1>
+          <h1 data-i18n-html="heroTitle">Geef reststromen en <em>productie-uitval</em> een volgende bestemming.</h1>
           <p class="hero-intro" data-i18n="heroIntro">BISML verbindt producenten, verwerkers en transporteurs. Zo krijgen reststromen, afgekeurde bulkleveringen en afgekeurde tanks een betrouwbare, traceerbare volgende bestemming. BISML voldoet aan de geldende wet- en regelgeving.</p>
           <div class="hero-actions">
             <a href="#contact" class="button button-primary"><span data-i18n="heroCta">Bespreek uw reststroom</span><span class="button-arrow">→</span></a>
@@ -518,27 +544,27 @@
 
     <section class="section contact" id="contact">
       <div class="container contact-grid">
-        <div class="contact-copy"><p class="eyebrow" data-i18n="contactEyebrow">Kom in gesprek</p><h2 data-i18n="contactTitle">Geef uw reststroom een volgende bestemming.</h2><p data-i18n="contactIntro">Vertel ons wat er speelt. We denken graag mee over een route die tankruimte creëert én waarde behoudt.</p><div class="contact-meta"><div><small data-i18n="contactEmailLabel">E-mail</small><a href="mailto:info@bisml.nl">info@bisml.nl</a></div><div><small data-i18n="contactLocationLabel">Werkgebied</small><span data-i18n="contactLocation">Nederland &amp; internationale ketens</span></div></div></div>
+        <div class="contact-copy"><p class="eyebrow" data-i18n="contactEyebrow">Kom in gesprek</p><h2 data-i18n="contactTitle">Geef uw reststroom een volgende bestemming.</h2><p data-i18n="contactIntro">Vertel ons wat er speelt. We denken graag mee over een route die tankruimte creëert én waarde behoudt.</p><div class="contact-meta"><div><small data-i18n="contactEmailLabel">E-mail</small><a href="mailto:info@bisml.nl">info@bisml.nl</a></div><div><small data-i18n="contactAfterHoursLabel">Buiten kantoortijden bereikbaar via:</small><a href="tel:+31657324444">+31 6 5732 4444</a></div><div><small data-i18n="contactLocationLabel">Werkgebied</small><span data-i18n="contactLocation">Nederland &amp; internationale ketens</span></div></div></div>
         <form class="lead-form" id="lead-form" novalidate><h3 data-i18n="formTitle">Vertel kort wat u nodig heeft.</h3><div class="form-row"><div class="field"><label for="name" data-i18n="formName">Naam</label><input id="name" name="name" autocomplete="name" required /></div><div class="field"><label for="company" data-i18n="formCompany">Organisatie</label><input id="company" name="company" autocomplete="organization" required /></div></div><div class="field"><label for="email" data-i18n="formEmail">E-mailadres</label><input id="email" name="email" type="email" autocomplete="email" required /></div><div class="field"><label for="subject" data-i18n="formSubject">Waar gaat uw vraag over?</label><select id="subject" name="subject"><option value="tanks" data-i18n="formOptionTanks">Afgekeurde bulkleveringen & tanks</option><option value="residual" data-i18n="formOptionResidual">Reststromen</option><option value="partnership" data-i18n="formOptionPartnership">Samenwerking in de keten</option><option value="other" data-i18n="formOptionOther">Anders</option></select></div><div class="field"><label for="message" data-i18n="formMessage">Uw bericht</label><textarea id="message" name="message" required></textarea></div><div class="form-submit"><button class="button button-primary" type="submit"><span data-i18n="formSubmit">Verstuur aanvraag</span><span class="button-arrow">→</span></button><p class="form-hint"><span data-i18n="formHint">Na het versturen opent uw e-mailprogramma met uw aanvraag.</span> <a data-legal-link="privacy" href="privacy.html" data-i18n="formPrivacy">Lees onze privacyverklaring.</a></p></div><p class="form-message" id="form-message" role="status"></p></form>
       </div>
     </section>
   </main>
 
-  <footer class="footer"><div class="container footer-inner"><a href="#top" class="brand" aria-label="BISML home"><img class="brand-logo" src="../assets/bisml-logo-horizontal.png" alt="BISML — Driving Circular Solutions" /></a><div class="footer-links"><span>© <span id="year"></span> BISML B.V.</span><a href="mailto:info@bisml.nl">info@bisml.nl</a><a href="#kwaliteit" data-i18n="footerQuality">Kwaliteit</a><a data-legal-link="privacy" href="privacy.html" data-i18n="footerPrivacy">Privacy</a><a data-legal-link="cookies" href="cookies.html" data-i18n="footerCookies">Cookies</a><a href="#top" data-i18n="footerTop">Naar boven ↑</a></div></div></footer>
+  <footer class="footer"><div class="container footer-inner"><a href="#top" class="brand" aria-label="BISML — Driving Circular Solutions"><svg class="brand-symbol" viewBox="0 0 100 100" aria-hidden="true"><defs><linearGradient id="brand-triangle-left" x1="100%" y1="0%" x2="0%" y2="100%"><stop offset="0%" stop-color="#68d7bc"/><stop offset="100%" stop-color="#55cf09"/></linearGradient><linearGradient id="brand-triangle-right" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#68d7bc"/><stop offset="100%" stop-color="#42c70c"/></linearGradient><linearGradient id="brand-triangle-base" x1="0%" y1="0%" x2="100%" y2="0%"><stop offset="0%" stop-color="#55cf09"/><stop offset="100%" stop-color="#68d7bc"/></linearGradient></defs><circle cx="50" cy="16" r="12" fill="#68d7bc"/><circle cx="17" cy="78" r="12" fill="#55cf09"/><circle cx="83" cy="78" r="12" fill="#68d7bc"/><path d="M25 69 43 32" fill="none" stroke="url(#brand-triangle-left)" stroke-linecap="square" stroke-width="7"/><path d="M57 32 75 69" fill="none" stroke="url(#brand-triangle-right)" stroke-linecap="square" stroke-width="7"/><path d="M30 78h40" fill="none" stroke="url(#brand-triangle-base)" stroke-linecap="square" stroke-width="7"/></svg><span class="brand-wordmark" aria-hidden="true">BISM<span>L</span></span><span class="brand-divider" aria-hidden="true"></span><span class="brand-slogan" data-i18n="utility">Driving Circular Solutions</span></a><div class="footer-links"><span>© <span id="year"></span> BISML B.V.</span><a href="mailto:info@bisml.nl">info@bisml.nl</a><a href="#kwaliteit" data-i18n="footerQuality">Kwaliteit</a><a data-legal-link="privacy" href="privacy.html" data-i18n="footerPrivacy">Privacy</a><a data-legal-link="cookies" href="cookies.html" data-i18n="footerCookies">Cookies</a><a href="#top" data-i18n="footerTop">Naar boven ↑</a></div></div></footer>
 
   <script>
     const translations = {
       nl: {
         skip: 'Naar inhoud', openMenu: 'Open menu', closeMenu: 'Sluit menu', primaryNav: 'Primaire navigatie', languageLabel: 'Taal', processVisual: 'Visualisatie van de circulaire keten', trustRegion: 'Kernpunten', routeTabsLabel: 'Stappen in de route', description: 'BISML verbindt circulaire markten voor reststromen en afgekeurde bulkleveringen en afgekeurde tanks.', seoTitle: 'BISML | Reststromen, afgekeurde bulkleveringen & tanks', seoDescription: 'BISML verbindt producenten, verwerkers en transporteurs voor betrouwbare, traceerbare verwerking van reststromen, afgekeurde bulkleveringen en afgekeurde tanks. BISML voldoet aan de geldende wet- en regelgeving.', utility: 'Driving Circular Solutions', utilityOne: 'Certificering', utilityTwo: 'Traceerbare keten', utilityThree: 'Circulaire waarde',
         navApproach: 'Aanpak', navChain: 'De keten', navValue: 'Meerwaarde', navQuality: 'Kwaliteit', navContact: 'Contact',
-        heroEyebrow: 'Van reststroom naar nieuwe waarde', heroTitle: 'Geef reststromen, afgekeurde bulkleveringen en <em>afgekeurde tanks</em> een volgende bestemming.', heroIntro: 'BISML verbindt producenten, verwerkers en transporteurs. Zo krijgen reststromen, afgekeurde bulkleveringen en afgekeurde tanks een betrouwbare, traceerbare volgende bestemming. BISML voldoet aan de geldende wet- en regelgeving.', heroCta: 'Bespreek uw reststroom', heroSecondary: 'Bekijk onze aanpak', heroProof: 'Gestructureerd, gecertificeerd en altijd gericht op waarde.',
+        heroEyebrow: 'Van reststroom naar nieuwe waarde', heroTitle: 'Geef reststromen en <em>productie-uitval</em> een volgende bestemming.', heroIntro: 'BISML verbindt producenten, verwerkers en transporteurs. Zo krijgen reststromen, afgekeurde bulkleveringen en afgekeurde tanks een betrouwbare, traceerbare volgende bestemming. BISML voldoet aan de geldende wet- en regelgeving.', heroCta: 'Bespreek uw reststroom', heroSecondary: 'Bekijk onze aanpak', heroProof: 'Gestructureerd, gecertificeerd en altijd gericht op waarde.',
         visualLabel: 'Circulaire route', visualStatus: 'In beweging', nodeProducer: 'Producent', nodeConnector: 'Verbindt', nodeProcessor: 'Verwerker', nodeOfftaker: 'Transporteur', visualNote: 'De transporteur opereert conform de geldende CIP-requirements, GMP-richtlijnen en FSSC 22000-vereisten.', visualSide: 'Geen verspilling',
         trustTitle: 'Waarom organisaties voor BISML kiezen', trustOneTitle: 'Zekerheid', trustOneText: 'GMP+ & FSSC 22000', trustTwoTitle: 'Transparantie', trustTwoText: 'Traceerbaar van bron tot bestemming', trustThreeTitle: 'Circulaire impact', trustThreeText: 'Nieuwe waarde uit elke stroom',
         approachEyebrow: 'Onze aanpak', approachTitle: 'Drie heldere afspraken. Eén sterke keten.', approachIntro: 'Een circulaire oplossing werkt alleen als elke stap klopt. Daarom baseren wij onze samenwerking op deze drie uitgangspunten.', statementLabel: 'Principe', statementOneTitle: 'Certificering & waarborging (ability)', statementOneText: 'Gecertificeerde processen vormen de basis van elke beslissing en elke beweging in de keten.', statementOnePoint1: 'Werken volgens GMP+ en FSSC 22000', statementOnePoint2: 'Professionele, betrouwbare partners', statementOnePoint3: 'Kwaliteit en traceerbaarheid als vaste basis', statementTwoTitle: 'First in - First out - Klant is leidend', statementTwoText: 'FIFO waarborgt een optimale verwerking. Uw wensen en de kwaliteit van het product staan steeds centraal.', statementTwoPoint1: 'First in, first out voor optimale verwerking', statementTwoPoint2: 'Minder waardeverlies in de keten', statementTwoPoint3: 'Capaciteit afgestemd op uw planning', statementThreeTitle: 'Snel afnemen voor tankruimte producent', statementThreeText: 'Door afgekeurde bulkleveringen en afgekeurde tanks snel af te nemen, creëren we tankruimte, continuïteit en rust in uw bedrijfsvoering.', statementThreePoint1: 'Ophalen binnen 12 uur na melding of akkoord', statementThreePoint2: 'Minder stilstand en productieverlies', statementThreePoint3: 'Flexibel inzetbaar bij piekbelasting en calamiteiten',
         routeEyebrow: 'De circulaire route', routeTitle: 'Van complexe reststroom naar concrete voortgang.', routeIntro: 'Wij houden de route overzichtelijk en verbinden de juiste partijen op het juiste moment.', routeTabOne: 'Inventariseren', routeTabTwo: 'Verbinden', routeTabThree: 'Realiseren',
         benefitEyebrow: 'Meerwaarde voor alle partijen', benefitTitle: 'Een keten die voor iedereen beter werkt.', benefitNote: 'Van operationele rust tot een duurzamere economie: de opbrengst is gedeeld.', benefitOneFor: 'Voor producenten', benefitOneTitle: 'Tankruimte en continuïteit', benefitOneText: 'Maximale beschikbaarheid van tanks en installaties met minimale stilstand.', benefitTwoFor: 'Voor verwerkers', benefitTwoTitle: 'Waardevolle aanvoer', benefitTwoText: 'Constante stromen die optimaal aansluiten bij de verwerkingscapaciteit.', benefitThreeFor: 'Voor transporteurs', benefitThreeTitle: 'Betrouwbare grondstoffen', benefitThreeText: 'Veilige, traceerbare en duurzame stromen met gewaarborgde kwaliteit.', benefitFourFor: 'Voor het milieu', benefitFourTitle: 'Minder verspilling', benefitFourText: 'Een lagere CO₂-uitstoot en een sterkere bijdrage aan de circulaire economie.', benefitFiveFor: 'Voor BISML', benefitFiveTitle: 'Duurzame samenwerking', benefitFiveText: 'Een sterke partnerrol op basis van expertise, integrale regie en kwaliteit.',
         qualityEyebrow: 'Kwaliteit als uitgangspunt', qualityTitle: 'Vertrouwen bouw je in elke schakel.', qualityIntro: 'Wij combineren een zorgvuldig ingerichte werkwijze met een praktische aanpak. Zo weet u waar u aan toe bent — vandaag én in de volgende stap.', qualityCta: 'Stel uw kwaliteitsvraag', qualityCardTitle: 'Gecertificeerd en controleerbaar.', qualityCardText: 'Kwaliteit, procesbeheersing en traceerbaarheid vormen de basis voor alle verdere stappen.', qualityListOne: 'GMP+ Feed Safety Assurance', qualityListTwo: 'FSSC 22000 voedselveiligheidsmanagement', qualityListThree: 'Heldere communicatie in de keten',
-        contactEyebrow: 'Kom in gesprek', contactTitle: 'Geef uw reststroom een volgende bestemming.', contactIntro: 'Vertel ons wat er speelt. We denken graag mee over een route die tankruimte creëert én waarde behoudt.', contactEmailLabel: 'E-mail', contactLocationLabel: 'Werkgebied', contactLocation: 'Nederland & internationale ketens', formTitle: 'Vertel kort wat u nodig heeft.', formName: 'Naam', formCompany: 'Organisatie', formEmail: 'E-mailadres', formSubject: 'Waar gaat uw vraag over?', formMessage: 'Uw bericht', formOptionTanks: 'Afgekeurde bulkleveringen & tanks', formOptionResidual: 'Reststromen', formOptionPartnership: 'Samenwerking in de keten', formOptionOther: 'Anders', formSubmit: 'Verstuur aanvraag', formHint: 'Na het versturen opent uw e-mailprogramma met uw aanvraag.', formPrivacy: 'Lees onze privacyverklaring.', formMailSubject: 'Websiteaanvraag', formSuccess: 'Bedankt. Uw e-mailprogramma wordt geopend met uw aanvraag.', formInvalid: 'Vul alstublieft alle verplichte velden correct in.', footerQuality: 'Kwaliteit', footerPrivacy: 'Privacy', footerCookies: 'Cookies', footerTop: 'Naar boven ↑',
+        contactEyebrow: 'Kom in gesprek', contactTitle: 'Geef uw reststroom een volgende bestemming.', contactIntro: 'Vertel ons wat er speelt. We denken graag mee over een route die tankruimte creëert én waarde behoudt.', contactEmailLabel: 'E-mail', contactAfterHoursLabel: 'Buiten kantoortijden bereikbaar via:', contactLocationLabel: 'Werkgebied', contactLocation: 'Nederland & internationale ketens', formTitle: 'Vertel kort wat u nodig heeft.', formName: 'Naam', formCompany: 'Organisatie', formEmail: 'E-mailadres', formSubject: 'Waar gaat uw vraag over?', formMessage: 'Uw bericht', formOptionTanks: 'Afgekeurde bulkleveringen & tanks', formOptionResidual: 'Reststromen', formOptionPartnership: 'Samenwerking in de keten', formOptionOther: 'Anders', formSubmit: 'Verstuur aanvraag', formHint: 'Na het versturen opent uw e-mailprogramma met uw aanvraag.', formPrivacy: 'Lees onze privacyverklaring.', formMailSubject: 'Websiteaanvraag', formSuccess: 'Bedankt. Uw e-mailprogramma wordt geopend met uw aanvraag.', formInvalid: 'Vul alstublieft alle verplichte velden correct in.', footerQuality: 'Kwaliteit', footerPrivacy: 'Privacy', footerCookies: 'Cookies', footerTop: 'Naar boven ↑',
         routes: [
           { title: 'De juiste route begint bij een helder beeld.', text: 'Wij analyseren reststromen, productie-uitval, bulkuitval en beschikbare capaciteit om kansen voor hoogwaardig hergebruik te identificeren. Zo stimuleren we circulariteit, reduceren we productieverlies en afval, en creëren we duurzame waarde door de gehele keten.', tag: 'Analyse & afstemming' },
           { title: 'De juiste partijen, zorgvuldig verbonden.', text: 'We koppelen producenten, verwerkers en transporteurs in een keten die past bij kwaliteit, volume en planning.', tag: 'Regie & ketenpartners' },
@@ -548,14 +574,14 @@
       en: {
         skip: 'Skip to content', openMenu: 'Open menu', closeMenu: 'Close menu', primaryNav: 'Primary navigation', languageLabel: 'Language', processVisual: 'Visualisation of the circular chain', trustRegion: 'Key points', routeTabsLabel: 'Steps in the route', description: 'BISML connects circular markets for residual streams and rejected bulk deliveries and rejected tanks.', seoTitle: 'BISML | Residual streams, rejected bulk deliveries & tanks', seoDescription: 'BISML connects producers, processors and transporters for reliable, traceable processing of residual streams, rejected bulk deliveries and rejected tanks. BISML complies with applicable laws and regulations.', utility: 'Driving Circular Solutions', utilityOne: 'Certification', utilityTwo: 'Traceable supply chain', utilityThree: 'Circular value',
         navApproach: 'Approach', navChain: 'The chain', navValue: 'Value', navQuality: 'Quality', navContact: 'Contact',
-        heroEyebrow: 'From residual stream to new value', heroTitle: 'Give residual streams, rejected bulk deliveries and <em>rejected tanks</em> a next destination.', heroIntro: 'BISML connects producers, processors and transporters. This gives residual streams, rejected bulk deliveries and rejected tanks a reliable, traceable next destination. BISML complies with applicable laws and regulations.', heroCta: 'Discuss your residual stream', heroSecondary: 'View our approach', heroProof: 'Structured, certified and always focused on value.',
+        heroEyebrow: 'From residual stream to new value', heroTitle: 'Give residual streams and <em>production losses</em> a next destination.', heroIntro: 'BISML connects producers, processors and transporters. This gives residual streams, rejected bulk deliveries and rejected tanks a reliable, traceable next destination. BISML complies with applicable laws and regulations.', heroCta: 'Discuss your residual stream', heroSecondary: 'View our approach', heroProof: 'Structured, certified and always focused on value.',
         visualLabel: 'Circular route', visualStatus: 'In motion', nodeProducer: 'Producer', nodeConnector: 'Connects', nodeProcessor: 'Processor', nodeOfftaker: 'Transporter', visualNote: 'The transporter operates in accordance with applicable CIP requirements, GMP guidelines and FSSC 22000 requirements.', visualSide: 'No waste',
         trustTitle: 'Why organisations choose BISML', trustOneTitle: 'Assurance', trustOneText: 'GMP+ & FSSC 22000', trustTwoTitle: 'Transparency', trustTwoText: 'Traceable from source to destination', trustThreeTitle: 'Circular impact', trustThreeText: 'New value from every stream',
         approachEyebrow: 'Our approach', approachTitle: 'Three clear commitments. One strong chain.', approachIntro: 'A circular solution only works when every step is right. That is why our partnerships are built on these three principles.', statementLabel: 'Principle', statementOneTitle: 'Certification & assurance (ability)', statementOneText: 'Certified processes are the foundation of every decision and every movement in the chain.', statementOnePoint1: 'Working in accordance with GMP+ and FSSC 22000', statementOnePoint2: 'Professional, dependable partners', statementOnePoint3: 'Quality and traceability as a constant foundation', statementTwoTitle: 'First in - First out - the customer leads', statementTwoText: 'FIFO safeguards optimal processing. Your requirements and product quality always come first.', statementTwoPoint1: 'First in, first out for optimal processing', statementTwoPoint2: 'Less loss of value in the chain', statementTwoPoint3: 'Capacity aligned with your planning', statementThreeTitle: 'Swift collection for producer tank capacity', statementThreeText: 'By swiftly collecting rejected bulk deliveries and rejected tanks, we create tank capacity, continuity and calm in your operations.', statementThreePoint1: 'Collection within 12 hours after notification or approval', statementThreePoint2: 'Less downtime and production loss', statementThreePoint3: 'Flexible support during peak loads and incidents',
         routeEyebrow: 'The circular route', routeTitle: 'From a complex residual stream to tangible progress.', routeIntro: 'We keep the route clear and connect the right parties at the right time.', routeTabOne: 'Assess', routeTabTwo: 'Connect', routeTabThree: 'Deliver',
         benefitEyebrow: 'Value for every party', benefitTitle: 'A chain that works better for everyone.', benefitNote: 'From operational peace of mind to a more sustainable economy: the value is shared.', benefitOneFor: 'For producers', benefitOneTitle: 'Tank capacity and continuity', benefitOneText: 'Maximum availability of tanks and installations with minimal downtime.', benefitTwoFor: 'For processors', benefitTwoTitle: 'Valuable supply', benefitTwoText: 'Consistent streams that match processing capacity efficiently.', benefitThreeFor: 'For transporters', benefitThreeTitle: 'Reliable materials', benefitThreeText: 'Safe, traceable and sustainable streams with assured quality.', benefitFourFor: 'For the environment', benefitFourTitle: 'Less waste', benefitFourText: 'Lower CO₂ emissions and a stronger contribution to the circular economy.', benefitFiveFor: 'For BISML', benefitFiveTitle: 'Sustainable partnerships', benefitFiveText: 'A strong partner role based on expertise, integrated direction and quality.',
         qualityEyebrow: 'Quality as a starting point', qualityTitle: 'Trust is built into every link.', qualityIntro: 'We combine a carefully designed way of working with a practical approach. That gives you clarity — today and in the next step.', qualityCta: 'Ask a quality question', qualityCardTitle: 'Certified and verifiable.', qualityCardText: 'Quality, process control and traceability are the basis for every next step.', qualityListOne: 'GMP+ Feed Safety Assurance', qualityListTwo: 'FSSC 22000 food safety management', qualityListThree: 'Clear communication across the chain',
-        contactEyebrow: 'Start a conversation', contactTitle: 'Give your residual stream a next destination.', contactIntro: 'Tell us what is happening. We will help you find a route that creates tank capacity while retaining value.', contactEmailLabel: 'E-mail', contactLocationLabel: 'Operating area', contactLocation: 'The Netherlands & international supply chains', formTitle: 'Tell us briefly what you need.', formName: 'Name', formCompany: 'Organisation', formEmail: 'E-mail address', formSubject: 'What is your enquiry about?', formMessage: 'Your message', formOptionTanks: 'Rejected bulk deliveries & tanks', formOptionResidual: 'Residual streams', formOptionPartnership: 'Supply-chain partnership', formOptionOther: 'Other', formSubmit: 'Send enquiry', formHint: 'After submitting, your e-mail application will open with your enquiry.', formPrivacy: 'Read our privacy statement.', formMailSubject: 'Website enquiry', formSuccess: 'Thank you. Your e-mail application is opening with your enquiry.', formInvalid: 'Please complete all required fields correctly.', footerQuality: 'Quality', footerPrivacy: 'Privacy', footerCookies: 'Cookies', footerTop: 'Back to top ↑',
+        contactEyebrow: 'Start a conversation', contactTitle: 'Give your residual stream a next destination.', contactIntro: 'Tell us what is happening. We will help you find a route that creates tank capacity while retaining value.', contactEmailLabel: 'E-mail', contactAfterHoursLabel: 'Available outside office hours via:', contactLocationLabel: 'Operating area', contactLocation: 'The Netherlands & international supply chains', formTitle: 'Tell us briefly what you need.', formName: 'Name', formCompany: 'Organisation', formEmail: 'E-mail address', formSubject: 'What is your enquiry about?', formMessage: 'Your message', formOptionTanks: 'Rejected bulk deliveries & tanks', formOptionResidual: 'Residual streams', formOptionPartnership: 'Supply-chain partnership', formOptionOther: 'Other', formSubmit: 'Send enquiry', formHint: 'After submitting, your e-mail application will open with your enquiry.', formPrivacy: 'Read our privacy statement.', formMailSubject: 'Website enquiry', formSuccess: 'Thank you. Your e-mail application is opening with your enquiry.', formInvalid: 'Please complete all required fields correctly.', footerQuality: 'Quality', footerPrivacy: 'Privacy', footerCookies: 'Cookies', footerTop: 'Back to top ↑',
         routes: [
           { title: 'The right route starts with a clear picture.', text: 'We analyse residual streams, production losses, bulk losses and available capacity to identify opportunities for high-value reuse. In doing so, we promote circularity, reduce production loss and waste, and create sustainable value throughout the chain.', tag: 'Assessment & alignment' },
           { title: 'The right parties, connected with care.', text: 'We link producers, processors and transporters in a chain that fits quality, volume and planning.', tag: 'Direction & chain partners' },
