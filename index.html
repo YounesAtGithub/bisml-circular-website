@@ -350,8 +350,8 @@
       .route-tab { border-bottom: 1px solid rgba(213,238,232,.18); display: flex; gap: 14px; padding: 14px 2px; }
       .route-tab[aria-selected="true"] { border-bottom-color: var(--signal); }
       .route-tab b { padding-top: 5px; }
-      .route-panel { min-height: 350px; padding: 27px; }
-      .route-tag { bottom: 25px; left: 27px; }
+      .route-panel { display: flex; flex-direction: column; min-height: 0; padding: 27px; }
+      .route-tag { align-self: flex-start; bottom: auto; left: auto; margin-top: 24px; position: static; }
       .benefit-intro { align-items: start; flex-direction: column; }
       .benefit-note { margin: 0; }
       .benefit-list { grid-template-columns: 1fr; margin-top: 38px; }
